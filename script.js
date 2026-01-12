@@ -1,30 +1,27 @@
-    //  hamberger button  
+    //  hamburger button  
     document.querySelector(".mobil-navbar-btn").addEventListener('click',()=>{
       document.querySelector(".header").classList.toggle("active")
     })
 
     
-  //  slider section
-
-    let slider = document.querySelector(".slider");
+  // ===================================
+  //      image slider section
+  // ===============================
+  let slider = document.querySelector(".slider");
+  let slides = document.querySelectorAll(".slide");
     
-      // top image slider section 
-      let slides = document.querySelectorAll(".slide");
-   
-  
-  
    let slideNumber = 1;
     //  create clone
    let firstChild= slides[0].cloneNode(true);
    let lastSlide= slides[slides.length-1].cloneNode(true);
-      //  atteched clone
+   
+   //  attached clone
    slider.appendChild(firstChild);
    slider.insertBefore(lastSlide,slides[0]);
-  //  update slides
+  
+   //  update slides
    slides= document.querySelectorAll(".slide");
 
-
-// slider.style.transform=`translateX(-${slideNumber*100}%)`;
 
 
 let startSlider=()=>{
@@ -41,7 +38,7 @@ let next= document.querySelector(".rightBtn");
 next.addEventListener("click",startSlider)
 
 
-let prev=document.querySelector(".leftBtn");
+let prev = document.querySelector(".leftBtn");
 
 let previous=()=>{  
   if(slideNumber<=0) return; 
@@ -52,7 +49,7 @@ let previous=()=>{
 
 prev.addEventListener("click",previous)
 
-// infinit loop 
+// infinite loop 
 
 slider.addEventListener("transitionend",()=>{
   if(slideNumber===slides.length-1){
@@ -63,7 +60,7 @@ slider.addEventListener("transitionend",()=>{
   if(slideNumber===0){
     slideNumber=slides.length-2;
     slider.style.transition=`none`
-        slider.style.transform=`translateX(-${slideNumber*100}%)`;
+    slider.style.transform=`translateX(-${slideNumber*100}%)`;
   }
   updateDotes()
 })
@@ -96,15 +93,18 @@ let updateDotes=()=>{
   dots.forEach(dot=>{
     dot.classList.remove("active");
    let  activeIndex = slideNumber-1;
-  if(activeIndex>=0 && activeIndex<slides.length-2){
+  if(activeIndex >=0 && activeIndex<slides.length-2){
     dots[activeIndex].classList.add("active")
   }
   })
 }
-console.log('lenght : ',slides.length)
 
-        // products quantity section
-      //  increase and decrease buttons
+        
+// =================================
+// products quantity section
+// =================================
+
+
       let cardContainer = document.querySelectorAll(".btncontainer");
  
       cardContainer.forEach((container) => {
@@ -130,116 +130,36 @@ console.log('lenght : ',slides.length)
       });
       
 
+// ==========================
+//  Testimonial section 
+// ==========================
 
-      // testimonial functionality
-const testimonialSlider = document.querySelector(".testimonial-grid")
+const testimonialSlider =document.querySelector(".testimonial-grid");
 
-let testimonialSlides= document.querySelectorAll('.card-wrapper');
-let length = testimonialSlides.length; 
-const tFirstClone= testimonialSlides[0].cloneNode(true);
-const tLastClone = testimonialSlides[length-1].cloneNode(true);
+const totalSlides = testimonialSlider.children;
 
-testimonialSlider.appendChild(tFirstClone);
-testimonialSlider.insertBefore(tLastClone,testimonialSlider[0]);
-testimonialSlides= document.querySelectorAll(".card-wrapper");
+let slideWidth= totalSlides[0].clientWidth;
 
-let slideWidth = testimonialSlides[0].clientWidth;
-let tslideIndex=1
-console.log("testimonial",testimonialSlider)
-console.log("testimonial slides",testimonialSlides)
+console.log("slides before update :",totalSlides)
 
-let tAutoslider=()=>{
-  if(tslideIndex===testimonialSlides.length-1) return;
-  tslideIndex++;
-  testimonialSlider.style.transition=`transform 3s linear`;
-  testimonialSlider.style.transform=`translateX(-${tslideIndex*100}px)`;
-  console.log("testimonial run")
+let isPaused= false;
+let scrollPosition=0;
+let speed = 1;
+  
+testimonialSlider.innerHTML+=testimonialSlider.innerHTML;
+
+console.log("total slides after update ",testimonialSlider.children)
+
+let length= totalSlides.length;
+
+let marquee=()=>{
+  if(!isPaused) scrollPosition+=speed;
+ 
+  if(scrollPosition >= slideWidth*(length/2)) scrollPosition=0;
+  testimonialSlider.style.transform=`translateX(-${scrollPosition}px)`;
+  requestAnimationFrame(marquee);
 }
+requestAnimationFrame(marquee);
 
-document.querySelector('.nextslide').addEventListener("click",tAutoslider);
-// setInterval(tAutoslider,4000);
-
-// loop funcitionality
-testimonialSlider.addEventListener("transitionend",()=>{
-  if(tslideIndex===testimonialSlides.length-1){
-    tslideIndex=1;
-    testimonialSlider.style.transition=`none`;
-    testimonialSlider.style.transform=`translateX(-${tslideIndex*400}px)`;
-
-  }
-
-  if(tslideIndex===0){
-    tslideIndex= testimonialSlides.length-2;
-    testimonialSlider.style.transition=`none`;
-    testimonialSlider.style.transform=`translateX(-${tslideIndex*400}px)`;
-
-  }
-})
-
-    // copy clone nodes
-      
-// create dots for testimonial
-
-// const testimonialSlider = document.querySelector(".testimonial-grid");
-
-// let testimonialSlides = document.querySelectorAll('.card-wrapper');
-// let length = testimonialSlides.length; 
-
-// const tFirstClone = testimonialSlides[0].cloneNode(true);
-// const tLastClone  = testimonialSlides[length - 1].cloneNode(true);
-
-// testimonialSlider.appendChild(tFirstClone);
-// testimonialSlider.insertBefore(tLastClone, testimonialSlider[0]);
-
-// testimonialSlides = document.querySelectorAll(".card-wrapper");
-// let tslideIndex = 1;
-
-// let tAutoslider = () => {
-//   // condition temporarily disable kar deta hoon to dekho move ho raha hai ya nahi
-//   if(tslideIndex===length-1);
-//   tslideIndex++;
-//   testimonialSlider.style.transition = `transform .5s linear`;
-//   testimonialSlider.style.transform  = `translateX(-${tslideIndex * 400}px)`;
-// };
-
-// setInterval(tAutoslider, 2000);
-
-  //  why-choose-us-card  section function
-//   let boxContainer= document.querySelectorAll(".why-choose-us-card");
-// let colorBoxes=document.querySelectorAll(".chooseIcon");
-
-//   boxContainer.forEach((box,)=>{
-//     let setIntervalId
-//     let icon= box.querySelector(".chooseIcon")
-
-
-
-//     box.addEventListener("mouseenter",()=>{
-//       clearInterval(setIntervalId);
-
-//     setIntervalId =setInterval(()=>{
-//         let color1 = Math.round(Math.random()*255);
-//         let color2 = Math.round(Math.random()*255);
-//         let color3 = Math.round(Math.random()*255);
-     
-//           icon.style.backgroundColor=`rgb(${color1},${color2},${color3})`
-    
-//       },600);
-
-      
-//     })
-//     icon
-//  box.addEventListener("mouseleave",()=>{
-//     clearInterval(setIntervalId);
-//         icon.style.backgroundColor=`white`
-      
-//  })
-
-//   });
-
-// find culpret ouline method 
-//   document.querySelectorAll("*").forEach(el => {
-//   if (el.scrollWidth > el.clientWidth) {
-//     console.log("Overflow ho raha hai:", el);
-//   }
-// });
+testimonialSlider.addEventListener("mouseenter",()=>isPaused=true);
+testimonialSlider.addEventListener("mouseleave",()=>isPaused=false);

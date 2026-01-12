@@ -291,12 +291,10 @@ flex-basis:45%;
     }
   .active .mobil-navbar-btn .mob-nav-icon[name="close-outline"]{
     display: block;
-    transition: all .2s ease-in-out;
   }
   .active .mobil-navbar-btn .mob-nav-icon[name="menu-outline"]{
     display: none;
     position: absolute;
-    /* transition: all .2s ease-in-out; */
   }
 
 

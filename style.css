@@ -1,15 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
- */
-
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'); */
- 
-
 
 *{
   margin: 0;
@@ -78,6 +66,7 @@ html,body{
 .navbar-list li a{
   font-size: 1.4rem;
   text-decoration: none;
+  color:#403f3d;
 }
 
 .navbar-list li a:hover{
@@ -100,7 +89,7 @@ html,body{
   
 }
 
-/* hamberger menu Btn */
+/* hamburger menu Btn */
 
 .mobil-navbar-btn{
     display: none;
@@ -113,12 +102,12 @@ html,body{
 }
 .mobil-navbar-btn .mob-nav-icon[name="close-outline" ]{
   display: none;
-    transition: all .2s ease-in-out;
 }
-/* slidbar sari section sart */
+/* slidebar sari section sart */
 .img-slider-wrapper{
 position: relative;
-bottom: -01rem;
+/* bottom: -01rem; */
+background-color: var(--bgColor1);
 }
 
   .top-slider{
@@ -173,7 +162,7 @@ width: 100%;
   gap: .2rem;
   position: absolute;
   left: 47%;
-  bottom:-0.3rem;
+  bottom:-1.3rem;
 }
 .dot{
   width: 1rem;
@@ -737,6 +726,9 @@ color: #686868;
   border-top-right-radius: .3rem;
   border-bottom-right-radius: .3rem;
 }
+.handItme a{
+text-decoration: none;
+}
 .handPickedSection .expBtn{
      text-align: center;
   }
@@ -1241,15 +1233,8 @@ transform: scale(1.06);
 }
 .testimonial-grid{
   display: flex;
-  justify-content: center;
-  align-items: center;
+ 
   gap: 2rem;
-  /* transition: all .9s linear; */
-  /* max-width:calc(5rem*18); */
-  /* animation: scroll 10s linear infinite;
-  perspective: 100px;
-   */
-
 }
 .card-wrapper{
 max-width: 400px;
