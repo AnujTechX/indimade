@@ -496,6 +496,8 @@ display: grid;
   margin: 0 auto;
   padding: 4rem 0 5rem 0;
   row-gap: 4rem;
+  max-width: 1200px;
+  margin:0 auto;
 }
 
 
@@ -530,10 +532,6 @@ content: " ";
     backdrop-filter: blur(10px);
     }
  
-
-
-
-
 .imgContainer::after{
   content: attr(data-text);
 
